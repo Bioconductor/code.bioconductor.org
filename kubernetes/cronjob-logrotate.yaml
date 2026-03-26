@@ -15,7 +15,7 @@ spec:
           serviceAccountName: logrotate-signal-sa
           containers:
             - name: signal-nginx
-              image: grimbough/code.bioc-logrotate:0.0.1
+              image: ghcr.io/bioconductor/code.bioc-logrotate:latest
               imagePullPolicy: Always
               volumeMounts:
                 - mountPath: "/var/log/nginx"

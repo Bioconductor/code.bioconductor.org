@@ -20,7 +20,7 @@ spec:
         fsGroup: 101      
       initContainers:
         - name: create-folder
-          image: grimbough/code.bioc-php-fpm:0.0.2
+          image: ghcr.io/bioconductor/code.bioc-php-fpm:latest
           imagePullPolicy: "Always"
           command: ['sh', '-c', '/init.sh']
           resources:
@@ -45,7 +45,7 @@ spec:
               - ALL
       containers:
         - name: php-fpm
-          image: grimbough/code.bioc-php-fpm:0.0.2
+          image: ghcr.io/bioconductor/code.bioc-php-fpm:latest
           imagePullPolicy: "Always"
           volumeMounts:
             - mountPath: "/var/git"
@@ -73,7 +73,7 @@ spec:
               drop: 
               - ALL
         - name: nginx
-          image: grimbough/code.bioc-nginx:0.0.2
+          image: ghcr.io/bioconductor/code.bioc-nginx:latest
           imagePullPolicy: "Always"
           volumeMounts:
             - mountPath: "/var/git"
@@ -109,7 +109,7 @@ spec:
               drop: 
               - ALL
         - name: goaccess
-          image: grimbough/code.bioc-goaccess:0.0.2
+          image: ghcr.io/bioconductor/code.bioc-goaccess:latest
           imagePullPolicy: "Always"
           volumeMounts:
             - mountPath: "/var/log/nginx"
@@ -178,7 +178,7 @@ spec:
               topologyKey: "kubernetes.io/hostname"
       containers:
         - name: zoekt-search
-          image: grimbough/code.bioc-zoekt-webserver:0.1.2
+          image: ghcr.io/bioconductor/code.bioc-zoekt-webserver:latest
           imagePullPolicy: "Always"
           volumeMounts:
             - mountPath: "/var/git"
@@ -236,7 +236,7 @@ spec:
         fsGroup: 101 
       containers:
         - name: code-home
-          image: grimbough/code.bioc-home:0.2.0
+          image: ghcr.io/bioconductor/code.bioc-home:latest
           imagePullPolicy: "Always"
           volumeMounts:
             - mountPath: "/var/shared"
