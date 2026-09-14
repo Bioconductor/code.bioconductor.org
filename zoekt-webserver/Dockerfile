@@ -1,12 +1,9 @@
-FROM alpine:3.21 AS zoekt-webserver
+FROM golang:1.25-alpine3.21 AS zoekt-webserver
 LABEL maintainer "Mike Smith <mike.smith@embl.de>"
 
-# We need go, git, bash, and musl-dev for zoekt-git-index
-RUN apk add --no-cache go git 
+RUN apk add --no-cache git 
 
 RUN go install github.com/sourcegraph/zoekt/cmd/zoekt-webserver@latest
-
-
 
 FROM alpine:3.21
 
