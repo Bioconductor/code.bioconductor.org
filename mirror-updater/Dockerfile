@@ -1,13 +1,13 @@
-FROM alpine:3.21 AS zoekt-index
+FROM golang:1.27-alpine3.24 AS zoekt-index
 
-RUN apk --no-cache add go git
+RUN apk --no-cache add go
 
 ENV CGO_ENABLED=0
 
 RUN go install github.com/sourcegraph/zoekt/cmd/zoekt-index@latest
 
 
-FROM alpine:3.21 AS ctags
+FROM alpine:3.24 AS ctags
 
 RUN apk --no-cache add wget
 
@@ -16,7 +16,7 @@ RUN wget https://raw.githubusercontent.com/sourcegraph/zoekt/refs/heads/main/ins
     ./install-ctags-alpine.sh
 
 
-FROM alpine:3.21
+FROM alpine:3.24
 LABEL maintainer "Mike Smith <mike.smith@embl.de>"
 
 COPY --from=ctags /tmp/ctags-*/* /usr/local/bin/
