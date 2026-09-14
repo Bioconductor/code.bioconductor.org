@@ -1,11 +1,13 @@
-FROM golang:1.25-alpine3.21 AS zoekt-webserver
+FROM golang:1.27-alpine3.24 AS zoekt-webserver
 LABEL maintainer "Mike Smith <mike.smith@embl.de>"
 
 RUN apk add --no-cache git 
 
 RUN go install github.com/sourcegraph/zoekt/cmd/zoekt-webserver@latest
 
-FROM alpine:3.21
+
+
+FROM alpine:3.24
 
 COPY --from=zoekt-webserver /root/go/bin/* /usr/local/bin/
 
