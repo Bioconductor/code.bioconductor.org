@@ -20,7 +20,7 @@ FROM alpine:3.24
 LABEL maintainer "Mike Smith <mike.smith@embl.de>"
 
 COPY --from=ctags /tmp/ctags-*/* /usr/local/bin/
-COPY --from=zoekt-index /root/go/bin/* /usr/local/bin/
+COPY --from=zoekt-index /usr/local/go/bin/* /usr/local/bin/
 
 ENV TZ="Europe/Berlin"
 

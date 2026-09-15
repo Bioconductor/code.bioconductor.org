@@ -9,7 +9,7 @@ RUN go install github.com/sourcegraph/zoekt/cmd/zoekt-webserver@latest
 
 FROM alpine:3.24
 
-COPY --from=zoekt-webserver /root/go/bin/* /usr/local/bin/
+COPY --from=zoekt-webserver /usr/local/go/bin/* /usr/local/bin/
 
 RUN set -x ; \
   addgroup -g 101 -S nginx ; \
