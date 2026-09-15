@@ -5,9 +5,12 @@ metadata:
   namespace: bioc-code-explorer
 spec:
   schedule: "*/15 * * * *"
+  concurrencyPolicy: Forbid
+  startingDeadlineSeconds: 60
   jobTemplate:
     spec:
       ttlSecondsAfterFinished: 100
+      activeDeadlineSeconds: 780
       template:
         spec:
           securityContext:

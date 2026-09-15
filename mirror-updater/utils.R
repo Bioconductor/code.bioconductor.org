@@ -158,7 +158,9 @@ write_robots_txt <- function(pkgs, output_file = "/var/shared/robots.txt") {
                        "GPTBot", "AhrefsBot", "PetalBot", "ClaudeBot",
                        "SemrushBot", "meta-externalagent", "SEOkicks",
                        "AwarioRssBot", "AwarioSmartBot", "ImagesiftBot",
-                       "AliyunSecBot", "Aliyun", "Bytespider")
+                       "AliyunSecBot", "Aliyun", "Bytespider", "YandexBot",
+                       "AcademicBotRTU", "Claude-SearchBot", "dotbot", 
+                       "ChatGPT-User")
 
     for(bot in excluded_bots) {
         writeLines(paste0("User-agent: ", bot), con = con)
@@ -166,25 +168,12 @@ write_robots_txt <- function(pkgs, output_file = "/var/shared/robots.txt") {
     }
 
     writeLines("User-agent: *", con = con)
-
-    writeLines(paste0("Allow: /browse/*/"), con = con)
-    writeLines(paste0("Disallow: /browse/*/*/"), con = con)
-    writeLines(paste0("Disallow: /browse/*/treegraph"), con = con)
-    writeLines(paste0("Disallow: /browse/themes"), con = con)
-    writeLines(paste0("Disallow: *tree/"), con = con)
-    writeLines(paste0("Disallow: *blob/"), con = con)
-    writeLines(paste0("Disallow: *commit"), con = con)
-    writeLines(paste0("Disallow: *stats/"), con = con)
-    writeLines(paste0("Disallow: *network/"), con = con)
-    writeLines(paste0("Disallow: *RELEASE_"), con = con)
-    writeLines(paste0("Disallow: *raw/"), con = con)
-    writeLines(paste0("Disallow: *logpatch/"), con = con)
-    writeLines(paste0("Disallow: *zipball/"), con = con)
-    writeLines(paste0("Disallow: *tarball/"), con = con)
-    writeLines(paste0("Disallow: *blame/"), con = con)
-    writeLines(paste0("Disallow: *rss/"), con = con)
-
-    writeLines(paste0("Disallow: /search/search?q"), con = con)
+    writeLines("Disallow: /", con = con)
+    writeLines("Allow: /browse/", con = con)
+    writeLines("Allow: /search/", con = con)
+    writeLines("Allow: /index.html", con = con)
+    writeLines("Allow: /about.html", con = con)
+    writeLines(sprintf("Allow: /browse/%s/", basename(pkgs)), con = con)
 
     writeLines("\nSitemap: https://code.bioconductor.org/sitemap.txt", con = con)
 }
