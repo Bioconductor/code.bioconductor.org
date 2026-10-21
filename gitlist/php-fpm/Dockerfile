@@ -6,8 +6,10 @@ ENV TZ="Europe/Berlin"
 RUN apk --no-cache add \
         curl \
         git \
-        nodejs-less \
-        unzip
+        nodejs \
+        npm \
+        unzip \
+    && npm install -g less
 
 WORKDIR /
 RUN curl -L --output gitlist.zip https://github.com/klaussilveira/gitlist/releases/download/1.1.1/gitlist-1.1.1.zip && unzip gitlist.zip -d gitlist
