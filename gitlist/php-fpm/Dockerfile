@@ -1,4 +1,4 @@
-FROM alpine:3.16 AS builder
+FROM alpine:3.24 AS builder
 LABEL maintainer "Mike Smith <mike.smith@embl.de>"
 
 ENV TZ="Europe/Berlin"
@@ -24,7 +24,7 @@ RUN test -d "/bioconductor/less/bootstrap-less" && echo "HERE" || git clone http
 WORKDIR /bioconductor
 RUN lessc less/style.less > css/style.css
 
-FROM php:8.1-fpm-alpine
+FROM php:8.5.12-fpm-alpine3.24
 
 ENV PHP_EXT_DEPS \
     gettext=gettext-dev \
