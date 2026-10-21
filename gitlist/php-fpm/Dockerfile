@@ -47,11 +47,10 @@ RUN set -x; \
         exif \
         gettext \
         intl \
-        opcache \
         sockets \
         xsl \
         zip \
-    && printf "\n" | pecl install apcu xdebug \
+    && printf "\n" | pecl install apcu \
     && docker-php-ext-enable apcu \
     && apk del .php-extensions-build-dependencies
 
