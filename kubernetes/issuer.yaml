@@ -13,3 +13,4 @@ spec:
       - http01:
           ingress:
             ingressClassName: external-users
+            serviceType: ClusterIP
